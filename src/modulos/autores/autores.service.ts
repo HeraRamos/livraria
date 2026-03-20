@@ -36,7 +36,7 @@ export class AutoresService {
       nome: body.nome
       email: body.email,
     });
-    atualizarAutor(idAutor: Number, bodyRequest: any){
+    atualizarAutor(idAutor: Number, bodyRequest: any) {
       const autorEncontrado = autores.find((autor) => autor.id === idAutor);
 
       if (!autorEncontrado) {
