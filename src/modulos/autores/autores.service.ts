@@ -24,7 +24,27 @@ export class AutoresService {
     return autores;
   }
   listarAutor(id: number) {
-    const autorEncontrado = autores.find((autor) => autor.id === id);
+    if (autor) {
+      return autor;
+    }
+  return 'Autor não encontrado';
+  }
+
+  criarAutor(body: CriarAutorDto) {
+    autores.push({
+      id: autores.length + 1,
+      nome: body.nome
+      email: body.email,
+    });
+    atualizarAutor(idAutor: Number, bodyRequest: any){
+      const autorEncontrado = autores.find((autor) => autor.id === idAutor);
+
+      if (!autorEncontrado) {
+        return 'Autor não encontrado';
+      }
+    }
+    autorEncontrado.nome = bodyRequest.nome;
+    autorEncontrado.email = bodyRequest.email;
 
     return autorEncontrado;
   }
