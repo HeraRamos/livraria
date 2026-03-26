@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
@@ -8,7 +9,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { AutoresService } from './autores.service';
-import { CriarAutorDto } from './autores.dto';
+import { AtualizarAutoDto, CriarAutorDto } from './autores.dto';
 
 @Controller('autores')
 export class AutoresController {
@@ -18,20 +19,27 @@ export class AutoresController {
   listarAutores() {
     return this.autoresService.listarAutores();
   }
+
   @Get('/listar-autor/:id')
-  listarautor(@Param('id', ParseIntPipe) id: number) {
+  listarAutor(@Param('id', ParseIntPipe) id: number) {
     return this.autoresService.listarAutor(id);
   }
 
   @Post('/criar-autor')
-  criarAutor(@Body() bodyRequest: CriarAutorDto) {
-    return this.autoresService.criarAutor(bodyRequest);
+  criarAutor(@Body() body: CriarAutorDto) {
+    return this.autoresService.criarAutor(body);
   }
+
   @Put('/atualizar-autor/:id')
   atualizarAutor(
     @Param('id', ParseIntPipe) idAutor: number,
-    @Body() bodyRequest: any,
+    @Body() body: AtualizarAutoDto,
   ) {
-    return this.autoresService.atualizarAutor(idAutor, bodyRequest);
+    return this.autoresService.atualizarAutor(idAutor, body);
+  }
+
+  @Delete('/listar-autor/:id')
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.autoresService.deletar(id);
   }
 }
