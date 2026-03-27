@@ -5,7 +5,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { AtualizarAutoDto, CriarAutorDto } from './autores.dto';
+import { AtualizarAutorDto, CriarAutorDto } from './autores.dto';
 
 let autores = [
   {
@@ -35,11 +35,11 @@ let autores = [
 export class AutoresService {
   listarAutores() {
     if (!autores) {
-      return 'Não há autores cadastrados';
+      return 'Autor Não Encontrado';
     }
+
     return autores;
   }
-
   listarAutor(id: number) {
     const autor = autores.find((autor) => autor.id === id);
 
@@ -63,7 +63,7 @@ export class AutoresService {
     return autores;
   }
 
-  atualizarAutor(id: number, body: AtualizarAutoDto) {
+  atualizarAutor(id: number, body: AtualizarAutorDto) {
     const autorEncontrado = this.listarAutor(id);
 
     if (!body.nome && !body.email) {

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AutoresModule } from './modules/autores/autores.module';
+import { AutoresModule } from './modulos/autores/autores.module';
 
 @Module({
   imports: [AutoresModule],
