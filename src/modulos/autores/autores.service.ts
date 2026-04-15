@@ -30,7 +30,6 @@ export class AutoresService {
     if (!autores) {
       return 'Não há autores cadastrados';
     }
-    //console.log("listarService");
     //API sempre retorna json
     return autores;
   }
