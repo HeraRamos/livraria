@@ -6,6 +6,7 @@ import {
 import { AtualizarAutorDto, CriarAutorDto } from './autores.dto';
 
 import { identity } from 'rxjs';
+import { AutoresRepository } from './autores.repository';
 
 let autores = [
   {
@@ -26,12 +27,10 @@ let autores = [
 ];
 @Injectable()
 export class AutoresService {
-  listarAutores() {
-    if (!autores) {
-      return 'Não há autores cadastrados';
-    }
-    //API sempre retorna json
-    return autores;
+  constructor(private readonly autoresRepository: AutoresRepository) {}
+
+  async listarAutores() {
+    return this.autoresRepository.listarAutores();
   }
 
   listarAutor(id: number) {
@@ -41,58 +40,6 @@ export class AutoresService {
     return autorEncontrado;
   }
 
-  /*
-
-  listarAutor(id: number) {
-    const autorEncontrado = autores.find((autor) => autor.id === id);
-    if (!autorEncontrado) throw new NotFoundException('Autor não encontrado.');
-
-    return autorEncontrado;
-  }
-
-  /*
-
-  listarAutor(){
-    const autorEncontrado = autores.find((autor) => autor.id === id);
-    if (!autorEncontrado){
-      throw new NotFoundException('Autor não encontrado');
-    }
-    return autorEncontrado;
-  }
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /*
-  listarAutor(id: number) {
-    const autorEncontrado = autores.find((autor) => autor.id === id);
-    if (!autorEncontrado) {
-      throw new NotFoundException('Autor não encontrado');
-    }
-    return autorEncontrado;
-  }
-  /*
-  listarAutor(id: number) {
-    const autorEncontrado = autores.find((autor) => autor.id === id);
-
-    if (!autorEncontrado) {
-      //método de retorno do nest
-      throw new NotFoundException('Autor não encontrado');
-      //escrever no NotFoundException() a mensagem que deseja exibir
-      //return 'Autor não encontrado.';
-    }
-
-    return autorEncontrado;
-  }
-*/
   criarAutor(bodyRequest: CriarAutorDto) {
     if (!bodyRequest.nome || !bodyRequest.email) {
       return 'Nome e email são obrigatórios.';
