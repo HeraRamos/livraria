@@ -21,7 +21,7 @@ export class AutoresController {
     return await this.autoresService.listarAutores();
   }
 
-  @Get('/listar-autor/')
+  @Get('/listar-autor/:id')
   listarAutor(@Param('id', ParseIntPipe) id: number) {
     return this.autoresService.listarAutor(id);
   }
@@ -37,7 +37,7 @@ export class AutoresController {
     @Body() bodyRequest: AtualizarAutorDto,
   ) {
     //return 'Autor atualizado com sucesso';
-    return this.autoresService.atualizarAutor(idAutor, bodyRequest);
+    // return this.autoresService.atualizarAutor(idAutor, bodyRequest);
   }
 
   @Delete('/deletar-autor/:id')
