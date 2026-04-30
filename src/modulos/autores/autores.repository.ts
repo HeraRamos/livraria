@@ -7,7 +7,7 @@ import { DRIZZLE } from 'src/db/database/database.constants';
 import type { DrizzleDB } from 'src/db/types/drizzleDB';
 import { autoresTabela } from 'src/db/schemas';
 import { eq } from 'drizzle-orm';
-import { CriarAutorDto } from './autores.dto';
+import { AtualizarAutorDto, CriarAutorDto } from './autores.dto';
 
 @Injectable()
 export class AutoresRepository {
@@ -39,11 +39,20 @@ export class AutoresRepository {
       const autorCriado = await this.db
         .select()
         .from(autoresTabela)
-        .where(autoresTabela.email, bodyRequest.email); //erro//
+        .where(eq(autoresTabela.email, bodyRequest.email)); //erro//
 
       return autorCriado;
     } catch (error) {
       throw new InternalServerErrorException('Erro ao criar um autor');
     }
+  }
+
+  async atualizarAutor(id: number, bodyRequest: AtualizarAutorDto) {
+    try {
+      await this.db
+        .update(autoresTabela)
+        .set(bodyRequest)
+        .where(eq(autoresTabela.id, id));
+    } catch (error) {}
   }
 }

@@ -1,0 +1,107 @@
+{
+  "version": "2",
+  "dialect": "mssql",
+  "id": "8597f746-ec4b-4e05-9ff5-b5b8770c9d21",
+  "prevIds": [
+    "64b64056-b7c2-4136-94f2-edd5fbc04fbe"
+  ],
+  "ddl": [
+    {
+      "name": "autores",
+      "entityType": "tables",
+      "schema": "dbo"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "generated": null,
+      "identity": {
+        "seed": 1,
+        "increment": 1
+      },
+      "name": "id",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "varchar(100)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "nome",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "email",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "bit",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "ativo",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "datetime",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "criado_em",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "id"
+      ],
+      "name": "autores_pkey",
+      "table": "autores",
+      "schema": "dbo",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "email"
+      ],
+      "name": "autores_email_key",
+      "schema": "dbo",
+      "table": "autores",
+      "entityType": "uniques"
+    },
+    {
+      "column": "ativo",
+      "nameExplicit": false,
+      "default": "((1))",
+      "name": "autores_ativo_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "autores"
+    },
+    {
+      "column": "criado_em",
+      "nameExplicit": false,
+      "default": "(getdate())",
+      "name": "autores_criado_em_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "autores"
+    }
+  ],
+  "renames": []
+}
