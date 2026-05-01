@@ -36,7 +36,7 @@ export class AutoresService {
   async listarAutor(id: number) {
     const autorEncontrado = await this.autoresRepository.listarAutor(id);
 
-    if (autorEncontrado.length === 0) {
+    if (!autorEncontrado) {
       throw new NotFoundException(`Autor com id ${id} não encontrado`);
     }
 
@@ -47,23 +47,11 @@ export class AutoresService {
     return this.autoresRepository.criarAutor(bodyRequest);
   }
 
-  // atualizarAutor(idAutor: number, bodyRequest: AtualizarAutorDto) {
-  //   //const autorEncontrado = autores.find((autor) => autor.id === idAutor);
-  //   const autorEncontrado = this.listarAutor(idAutor);
+  async atualizarAutor(idAutor: number, bodyRequest: AtualizarAutorDto) {
+    await this.listarAutor(idAutor);
 
-  //   if (!bodyRequest.nome && !bodyRequest.email) {
-  //     throw new BadRequestException('Nome ou email é obrigatório.');
-  //   }
-
-  //   if (bodyRequest.nome) {
-  //     autorEncontrado.nome = bodyRequest.nome;
-  //   }
-  //   if (bodyRequest.email) {
-  //     autorEncontrado.email = bodyRequest.email;
-  //   }
-
-  //   return autorEncontrado;
-  // }
+    return await this.autoresRepository.atualizarAutor(idAutor, bodyRequest);
+  }
 
   deletarAutor(idAutor: number) {
     // utiliza o this para referenciar a própria classe dele(AutoresService)
