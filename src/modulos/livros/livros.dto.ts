@@ -1,18 +1,36 @@
-import { IsString, MinLength, IsNotEmpty, MaxLength } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
 export class CriarLivroDto {
-  @IsString({ message: 'O titulo deve ser uma string' })
-  @IsNotEmpty({ message: 'O titulo é obrigatório' })
-  @MinLength(3, { message: 'O titulo deve ter entre 3 e 100 caracteres' })
-  @MaxLength(100, { message: 'O titulo deve ter no máximo 100 caracteres' })
+  @IsString({ message: 'O título deve ser uma string' })
+  @IsNotEmpty({ message: 'O título é obrigatório' })
+  @MinLength(3, { message: 'O titulo deve ter pelo menos 3 caracteres' })
+  @MaxLength(100, { message: 'O título deve ter no máximo 100 caracteres' })
   @Transform(({ value }) => {
     const valor = typeof value;
 
     if (valor === 'string') {
       return value.trim();
     }
-    return value;
+  })
+  titulo: string;
+
+  @IsString({ message: 'A descrição deve ser uma string' })
+  @IsNotEmpty({ message: 'A descrição é obrigatório' })
+  @MinLength(3, { message: 'A descrição deve ter pelo menos 3 caracteres' })
+  @MaxLength(500, { message: 'A descrição deve ter no máximo 500 caracteres' })
+  @Transform(({ value }) => {
+    const valor = typeof value;
+
+    if (valor === 'string') {
+      return value.trim();
+    }
   })
   descricao: string;
 

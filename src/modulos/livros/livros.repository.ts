@@ -6,6 +6,7 @@ import {
 import { DRIZZLE } from 'src/db/database/database.constants';
 import type { DrizzleDB } from 'src/db/types/drizzleDB';
 import { livrosTabela } from 'src/db/schemas/livros';
+import { CriarLivroDto } from './livros.dto';
 
 @Injectable()
 export class LivrosRepository {
@@ -21,7 +22,7 @@ export class LivrosRepository {
     }
   }
 
-  async criarLivro(bodyRequest: any) {
+  async criarLivro(bodyRequest: CriarLivroDto) {
     try {
       await this.db.insert(livrosTabela).values({
         idAutor: bodyRequest.id_autor,

@@ -8,6 +8,6 @@ import { AutoresRepository } from './autores.repository';
 @Module({
   controllers: [AutoresController],
   providers: [AutoresService, AutoresRepository],
-  exports: [],
+  exports: [AutoresService],
 })
 export class AutoresModule {}

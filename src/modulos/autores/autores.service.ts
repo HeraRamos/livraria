@@ -8,23 +8,6 @@ import { AtualizarAutorDto, CriarAutorDto } from './autores.dto';
 import { identity } from 'rxjs';
 import { AutoresRepository } from './autores.repository';
 
-let autores = [
-  {
-    id: 1,
-    nome: 'João Maria',
-    email: 'joaomaria@gmail.com',
-  },
-  {
-    id: 2,
-    nome: 'Juliana Silva',
-    email: 'julianasilva@gmail.com',
-  },
-  {
-    id: 3,
-    nome: 'David Silva',
-    email: 'davidsilva@gmail.com',
-  },
-];
 @Injectable()
 export class AutoresService {
   constructor(private readonly autoresRepository: AutoresRepository) {}
