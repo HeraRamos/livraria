@@ -7,6 +7,7 @@ import { DRIZZLE } from 'src/db/database/database.constants';
 import type { DrizzleDB } from 'src/db/types/drizzleDB';
 import { livrosTabela } from 'src/db/schemas/livros';
 import { CriarLivroDto } from './livros.dto';
+import { eq } from 'drizzle-orm';
 
 @Injectable()
 export class LivrosRepository {
@@ -33,5 +34,16 @@ export class LivrosRepository {
       return `Livro ${bodyRequest.titulo} criado com sucesso`;
     } catch (error) {}
     throw new InternalServerErrorException('Erro ao criar livro');
+  }
+  async listarlivro(id: number) {
+    try {
+      const livroEncontrado = await this.db
+        .select()
+        .from(livrosTabela)
+        .where(eq(livrosTabela.id, id));
+      return livroEncontrado[0];
+    } catch (error) {
+      throw new InternalServerErrorException('Erro ao listar um livro');
+    }
   }
 }
