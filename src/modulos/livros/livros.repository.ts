@@ -6,6 +6,7 @@ import {
 import { DRIZZLE } from 'src/db/database/database.constants';
 import type { DrizzleDB } from 'src/db/types/drizzleDB';
 import { livrosTabela } from 'src/db/schemas/livros';
+import { autoresTabela } from 'src/db/schemas/autores';
 import { CriarLivroDto } from './livros.dto';
 import { eq } from 'drizzle-orm';
 
@@ -46,4 +47,24 @@ export class LivrosRepository {
       throw new InternalServerErrorException('Erro ao listar um livro');
     }
   }
+
+ async listarLivrosComAutor() {
+ try {
+  const livrosComAutor = await this.db
+  .select({
+    id: livrosTabela.id,
+    titulo: livrosTabela.titulo,
+    nome: autoresTabela.nome,
+    descricao: livrosTabela.descricao,
+  })
+  .from(livrosTabela)
+  .innerJoin(autoresTabela, eq(livrosTabela.idAutor, autoresTabela.id));
+
+  return livrosComAutor;
+ } catch (error) {
+  throw new InternalServerErrorException('Erro ao listar livros com autor');
+ }
+
+ }
+
 }
