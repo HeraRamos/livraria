@@ -79,14 +79,16 @@ export class LivrosRepository {
   } catch (error) { 
   throw new InternalServerErrorException('Erro ao listar livro com autor'); 
 }
-
-
-
-
-
  }
 
+ async deletarLivro(id: number) {
+  try {
+    await this.db.delete(livrosTabela).where(eq(livrosTabela.id, id));
 
+    return `Livro deletado com sucesso: ${id}`;
 
-
+    } catch (error) {
+    throw new InternalServerErrorException('Erro ao deletar livro');
+  }
+ }
 }

@@ -22,26 +22,31 @@ export class AutoresController {
   }
 
   @Get('/listar-autor/:id')
-  listarAutor(@Param('id', ParseIntPipe) id: number) {
-    return this.autoresService.listarAutor(id);
+  async listarAutor(@Param('id', ParseIntPipe) id: number) {
+    return await this.autoresService.listarAutor(id);
   }
 
   @Post('/criar-autor')
-  criarAutor(@Body() bodyRequest: CriarAutorDto) {
-    return this.autoresService.criarAutor(bodyRequest);
+  async criarAutor(@Body() bodyRequest: CriarAutorDto) {
+    return await this.autoresService.criarAutor(bodyRequest);
   }
 
   @Put('/atualizar-autor/:id')
-  atualizarAutor(
+  async atualizarAutor(
     @Param('id', ParseIntPipe /*transforma em inteiro*/) idAutor: number,
     @Body() bodyRequest: AtualizarAutorDto,
   ) {
-    return this.autoresService.atualizarAutor(idAutor, bodyRequest);
+    return await this.autoresService.atualizarAutor(idAutor, bodyRequest);
   }
 
   @Delete('/deletar-autor/:id')
   // ParseIntPipe transforma o id string em número
-  deletarAutor(@Param('id', ParseIntPipe) idAutor: number) {
-    return this.autoresService.deletarAutor(idAutor);
+  async deletarAutor(@Param('id', ParseIntPipe) idAutor: number) {
+    return await this.autoresService.deletarAutor(idAutor);
+  }
+
+  @Put('/inativar-autor/:id')
+  async inativarAutor(@Param('id', ParseIntPipe) idAutor: number) {
+    return await this.autoresService.inativarAutor(idAutor);
   }
 }
