@@ -1,0 +1,326 @@
+{
+  "version": "2",
+  "dialect": "mssql",
+  "id": "0a63441e-2988-47f2-b5d8-9badb50d6e51",
+  "prevIds": [
+    "cc8aeb05-ce51-42d8-a07d-fb6997bc2d3e"
+  ],
+  "ddl": [
+    {
+      "name": "autores",
+      "entityType": "tables",
+      "schema": "dbo"
+    },
+    {
+      "name": "livros",
+      "entityType": "tables",
+      "schema": "dbo"
+    },
+    {
+      "name": "usuarios",
+      "entityType": "tables",
+      "schema": "dbo"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "generated": null,
+      "identity": {
+        "seed": 1,
+        "increment": 1
+      },
+      "name": "id",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "varchar(100)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "nome",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "email",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "bit",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "ativo",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "datetime",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "criado_em",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "autores"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "generated": null,
+      "identity": {
+        "seed": 1,
+        "increment": 1
+      },
+      "name": "id",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "livros"
+    },
+    {
+      "type": "varchar(100)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "titulo",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "livros"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "id_autor",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "livros"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "descrição",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "livros"
+    },
+    {
+      "type": "datetime",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "criado_em",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "livros"
+    },
+    {
+      "type": "datetime",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "atualizado_em",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "livros"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "generated": null,
+      "identity": {
+        "seed": 1,
+        "increment": 1
+      },
+      "name": "id",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "usuarios"
+    },
+    {
+      "type": "varchar(100)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "nome",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "usuarios"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "email",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "usuarios"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "password_hashed",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "usuarios"
+    },
+    {
+      "type": "bit",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "ativo",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "usuarios"
+    },
+    {
+      "type": "datetime",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "criado_em",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "usuarios"
+    },
+    {
+      "columns": [
+        "id_autor"
+      ],
+      "nameExplicit": false,
+      "schemaTo": "dbo",
+      "tableTo": "autores",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "livros_id_autor_autores_id_fk",
+      "entityType": "fks",
+      "table": "livros",
+      "schema": "dbo"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "id"
+      ],
+      "name": "autores_pkey",
+      "table": "autores",
+      "schema": "dbo",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "id"
+      ],
+      "name": "livros_pkey",
+      "table": "livros",
+      "schema": "dbo",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "id"
+      ],
+      "name": "usuarios_pkey",
+      "table": "usuarios",
+      "schema": "dbo",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "email"
+      ],
+      "name": "autores_email_key",
+      "schema": "dbo",
+      "table": "autores",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "email"
+      ],
+      "name": "usuarios_email_key",
+      "schema": "dbo",
+      "table": "usuarios",
+      "entityType": "uniques"
+    },
+    {
+      "column": "ativo",
+      "nameExplicit": false,
+      "default": "((1))",
+      "name": "autores_ativo_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "autores"
+    },
+    {
+      "column": "criado_em",
+      "nameExplicit": false,
+      "default": "(getdate())",
+      "name": "autores_criado_em_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "autores"
+    },
+    {
+      "column": "criado_em",
+      "nameExplicit": false,
+      "default": "(getdate())",
+      "name": "livros_criado_em_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "livros"
+    },
+    {
+      "column": "atualizado_em",
+      "nameExplicit": false,
+      "default": "(getdate())",
+      "name": "livros_atualizado_em_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "livros"
+    },
+    {
+      "column": "ativo",
+      "nameExplicit": false,
+      "default": "((1))",
+      "name": "usuarios_ativo_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "usuarios"
+    },
+    {
+      "column": "criado_em",
+      "nameExplicit": false,
+      "default": "(getdate())",
+      "name": "usuarios_criado_em_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "usuarios"
+    }
+  ],
+  "renames": []
+}
